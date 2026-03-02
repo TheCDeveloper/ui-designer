@@ -1,32 +1,37 @@
 (function() {
+    
+    const MIN_ZOOM = -20;
+    const MAX_ZOOM = 80;
 
+    
     const designView = document.getElementById("view-design");
     const canvas = document.getElementById("canvas");
 
-    var hold = false;
-    var x = 0, y = 0;
-    var zoom = 0;
+    let hold = false;
+    let x = 0, y = 0 zoom = 0;
 
-    function transform() {
-        canvas.style.transform = `scale(${100 + zoom}%) translate(${x / ((100 + zoom)/100)}px, ${y / ((100 + zoom)/100)}px)`;
+    function setTransform() {
+        zoom = Math.min(Math.max(zoom, MIN_ZOOM), MAX_ZOOM);
+        const scale = (100 + zoom) / 100;
+
+        canvas.style.transform = `scale(${scale}) translate(${x / scale}px, ${y / scale}px)`;
     }
 
     designView.addEventListener("wheel", e => {
-        zoom += e.deltaY;
-        transform();
+        e.preventDefault();
+        zoom -= e.deltaY * 0.15;
+        setTransform();
     });
 
     designView.addEventListener("mousedown", () => { hold = true });
     designView.addEventListener("mouseup", () => { hold = false });
 
     designView.addEventListener("mousemove", e => {
-        if (!hold) {
-            return;
-        }
+        if (!hold) return;
 
         x += e.movementX;
         y += e.movementY;
-        transform();
+        setTransform();
     });
 
 })();

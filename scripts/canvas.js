@@ -12,7 +12,7 @@
     }
 
     designView.addEventListener("wheel", e => {
-        zoom += e.deltaY;
+        zoom += e.deltaY * 0.15;
         transform();
     });
 

@@ -9,10 +9,11 @@
 
     function transform() {
         canvas.style.transform = `scale(${100 + zoom}%) translate(${x / ((100 + zoom)/100)}px, ${y / ((100 + zoom)/100)}px)`;
+        zoom = Math.min(Math.max(zoom, -20), 80);
     }
 
     designView.addEventListener("wheel", e => {
-        zoom += e.deltaY * 0.15;
+        zoom -= e.deltaY * 0.15;
         transform();
     });
 

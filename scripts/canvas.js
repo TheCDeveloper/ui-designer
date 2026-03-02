@@ -8,7 +8,7 @@
     const canvas = document.getElementById("canvas");
 
     let hold = false;
-    let x = 0, y = 0 zoom = 0;
+    let x = 0, y = 0, zoom = 0;
 
     function setTransform() {
         zoom = Math.min(Math.max(zoom, MIN_ZOOM), MAX_ZOOM);

@@ -24,9 +24,9 @@
     z-index: 10;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
+    margin: 0 50%;
     padding: 5px;
-
-    justify-self: center;
+    transform: translateX(-50%);
 
     background-color: #ffffff88;
 

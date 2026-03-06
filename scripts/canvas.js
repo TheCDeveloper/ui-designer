@@ -1,23 +1,19 @@
 (function() {
+    
+    const MIN_ZOOM = -20;
+    const MAX_ZOOM = 80;
 
+    
     const designView = document.getElementById("view-design");
     const canvas = document.getElementById("canvas");
 
     let hold = false;
-    let x = 0, y = 0;
-    let zoom = 0;
-
-    const MIN_ZOOM = -20;
-    const MAX_ZOOM = 80;
+    let x = 0, y = 0 zoom = 0;
 
     function setTransform() {
-        // clamp zoom first
         zoom = Math.min(Math.max(zoom, MIN_ZOOM), MAX_ZOOM);
-
-        // calculate scale from zoom (0 => 1, 80 => 1.8, -20 => 0.8)
         const scale = (100 + zoom) / 100;
 
-        // apply transform
         canvas.style.transform = `scale(${scale}) translate(${x / scale}px, ${y / scale}px)`;
     }
 

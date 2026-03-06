@@ -1,16 +1,16 @@
+#view-design {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #canvas {
     position: absolute;
     width: 800px;
     height: 450px;
 
-    justify-self: center;
-    align-self: center;
-
     background-color: white;
 
     border: none;
     border-radius: 12px;
-
-    visibility: visible;
-    opacity: 1;
 }
